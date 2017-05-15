@@ -25,6 +25,10 @@ namespace WpfApplication1.ViewModels.NoiseNode
             fastNoise = _fastNoise;
         }
 
+        public float GetNoiseValue(int x, int y, float? currentValue = null)
+        {
+            return fastNoise.Get2dValue(x, y);
+        }
         public string Name { get; set; }
 
         public int Seed { get

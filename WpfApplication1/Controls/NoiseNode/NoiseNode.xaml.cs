@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApplication1.Controls.NoiseNode;
+using WpfApplication1.Interfaces;
 using WpfApplication1.ViewModels.NoiseNode;
 
 namespace WpfApplication1.Controls
@@ -20,10 +21,11 @@ namespace WpfApplication1.Controls
     /// <summary>
     /// Interaction logic for NoiseNode.xaml
     /// </summary>
-    public partial class NoiseNodeControl : UserControl
+    public partial class NoiseNodeControl : UserControl, FlowChartElementInterface
     {
         private FastNoiseCLI.FastNoiseCLI fastNoise;
         private NoiseNodeViewModel vm;
+        private FlowChartElementInterface outputNode;
 
         public NoiseNodeControl()
         {
@@ -34,7 +36,16 @@ namespace WpfApplication1.Controls
         }
 
         public FastNoiseCLI.FastNoiseCLI NoiseMachine { get { return fastNoise; } }
+        public bool isLastNode { get { return outputNode == null; } }
+        public FlowChartElementInterface GetNextNode()
+        {
+            return outputNode;
+        }
 
+        public float GetValue(int x, int y, float? currentValue = null)
+        {
+            return vm.GetNoiseValue(x, y, currentValue);
+        }
         private void button_Click(object sender, RoutedEventArgs e)
         {
             NoiseNodeConfig config = new NoiseNodeConfig(vm);

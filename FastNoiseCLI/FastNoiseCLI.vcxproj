@@ -132,6 +132,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FastNoise.h" />
     <ClInclude Include="FastNoiseCLI.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Stdafx.h" />

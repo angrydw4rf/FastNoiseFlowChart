@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApplication1.Interfaces;
 using WpfApplication1.ViewModels.Main;
 using WpfApplication1.ViewModels.NoiseNode;
 using WpfApplication1.Windows;
@@ -52,13 +53,26 @@ namespace WpfApplication1
                 int yIndex = y * width;
                 for (int x = 0; x < width; ++x)
                 {
-                    
+                    FlowChartElementInterface currentNode = flowchart.StartNode;
+                    float? value = null;
+                    while (currentNode != null)
+                    {
+                        value = currentNode.GetValue(x, y, value);
+                        currentNode = currentNode.GetNextNode();
+
+                        float pixelValue = 255 * (value.Value + 1.0f) / 2;
+                        pixelData[x + yIndex] = (byte)pixelValue;
+                    }
+                   
+                    /*
                     float value = flowchart.StartNode.NoiseMachine.Get2dValue(x, y);
                     float pixelValue = 255 * (value + 1.0f) / 2;
 
                     lowest = value < lowest ? value : lowest;
                     highest = value > highest ? value : highest;
+                    
                     pixelData[x + yIndex] = (byte)pixelValue;
+                    */
                 }
             }
             return BitmapSource.Create(width, height, dpi, dpi, PixelFormats.Gray8, null, pixelData, stride);

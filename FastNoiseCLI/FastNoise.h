@@ -37,13 +37,14 @@ typedef double FN_DECIMAL;
 #else
 typedef float FN_DECIMAL;
 #endif
-
+public enum class cool {Cool1, cool2};
 public class FastNoise
 {
 public:
 	FastNoise(int seed = 1337) { SetSeed(seed); CalculateFractalBounding(); };
 	~FastNoise() { delete m_cellularNoiseLookup; }
 
+public : 
 	enum class NoiseType { Value, ValueFractal, Perlin, PerlinFractal, Simplex, SimplexFractal, Cellular, WhiteNoise, Cubic, CubicFractal };
 	enum class Interp { Linear, Hermite, Quintic };
 	enum class FractalType { FBM, Billow, RigidMulti };
