@@ -25,8 +25,8 @@ namespace WpfApplication1.Controls.NoiseNode
         public NoiseNodeConfig()
         {
             InitializeComponent();
-            var test = Enum.GetValues(typeof(FastNoise.Interp));
-            interpInput.ItemsSource = Enum.GetValues(typeof(FastNoise.Interp));
+            var test = Enum.GetValues(typeof(Interp));
+            interpInput.ItemsSource = Enum.GetValues(typeof(Interp));
         }
 
         public NoiseNodeConfig(NoiseNodeViewModel _vm)
@@ -34,8 +34,9 @@ namespace WpfApplication1.Controls.NoiseNode
             InitializeComponent();
             vm = _vm;
             this.DataContext = vm;
-            var test = Enum.GetValues(typeof(FastNoise.Interp));
-            interpInput.ItemsSource = Enum.GetValues(typeof(FastNoise.Interp)).Cast<FastNoise.Interp>(); 
+            var test = Enum.GetValues(typeof(Interp));
+            interpInput.ItemsSource = Enum.GetValues(typeof(Interp)).Cast<Interp>();
+            noiseTypeInput.ItemsSource = Enum.GetValues(typeof(NoiseType)).Cast<NoiseType>();
         }
 
         private void seed_PreviewTextInput(object sender, TextCompositionEventArgs e)

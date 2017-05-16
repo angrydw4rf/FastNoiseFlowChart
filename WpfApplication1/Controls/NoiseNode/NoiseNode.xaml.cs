@@ -44,7 +44,8 @@ namespace WpfApplication1.Controls
 
         public FlowChartElementInterface Input { get; set; }
         public FlowChartElementInterface Output { get; set; }
-
+        public Point InputLocation { get { return InputHook.TranslatePoint(new Point(7, 7), GetCanvas()); } }
+        public Point OutputLocation { get { return OutputHook.TranslatePoint(new Point(7, 7), GetCanvas()); } }
         public float GetValue(int x, int y, float? currentValue = null)
         {
             return vm.GetNoiseValue(x, y, currentValue);
@@ -53,6 +54,18 @@ namespace WpfApplication1.Controls
         {
             NoiseNodeConfig config = new NoiseNodeConfig(vm);
             config.Show();
+        }
+
+        public Canvas GetCanvas()
+        {
+            DependencyObject ucParent = this.Parent;
+
+            while (!(ucParent is Canvas)) //Or FlowChartElementInterface?
+            {
+                ucParent = LogicalTreeHelper.GetParent(ucParent);
+            }
+
+            return ucParent as Canvas;
         }
     }
 }

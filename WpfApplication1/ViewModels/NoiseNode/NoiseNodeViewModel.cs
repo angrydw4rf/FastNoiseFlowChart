@@ -54,7 +54,7 @@ namespace WpfApplication1.ViewModels.NoiseNode
             }
         }
 
-        public FastNoise.Interp Interp
+        public Interp Interp
         {
             get
             {
@@ -66,7 +66,7 @@ namespace WpfApplication1.ViewModels.NoiseNode
             }
         }
 
-        public FastNoise.NoiseType NoiseType
+        public NoiseType NoiseType
         {
             get
             {

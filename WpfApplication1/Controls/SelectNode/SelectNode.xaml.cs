@@ -10,18 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApplication1.Controls;
-using WpfApplication1.Interfaces;
 
-namespace WpfApplication1.Windows
+namespace WpfApplication1.Controls.SelectNode
 {
     /// <summary>
-    /// Interaction logic for FlowChart.xaml
+    /// Interaction logic for SelectNode.xaml
     /// </summary>
-    public partial class FlowChart : Window
+    public partial class SelectNode : UserControl
     {
-        public FlowChart()
+        public SelectNode()
         {
             InitializeComponent();
         }

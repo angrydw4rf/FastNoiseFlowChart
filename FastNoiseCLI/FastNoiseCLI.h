@@ -41,19 +41,19 @@ namespace FastNoiseCLI {
 			return fastNoise->GetFrequency();
 		}
 
-		void SetInterp(FastNoise::Interp interp) {
+		void SetInterp(Interp interp) {
 			fastNoise->SetInterp(interp);
 		}
 
-		FastNoise::Interp GetInterp() {
+		Interp GetInterp() {
 			return fastNoise->GetInterp();
 		}
 
-		void SetNoiseType(FastNoise::NoiseType noiseType) {
+		void SetNoiseType(NoiseType noiseType) {
 			fastNoise->SetNoiseType(noiseType);
 		}
 
-		FastNoise::NoiseType GetNoiseType() {
+		NoiseType GetNoiseType() {
 			return fastNoise->GetNoiseType();
 		}
 	};
