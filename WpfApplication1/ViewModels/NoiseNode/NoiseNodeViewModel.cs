@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using WpfApplication1.Interfaces;
 using static FastNoiseCLI.FastNoiseCLI;
 
 namespace WpfApplication1.ViewModels.NoiseNode
@@ -12,8 +13,6 @@ namespace WpfApplication1.ViewModels.NoiseNode
     public class NoiseNodeViewModel 
     {
         private FastNoiseCLI.FastNoiseCLI fastNoise;
-        private UserControl input;
-        private UserControl output;
 
         public NoiseNodeViewModel()
         {
@@ -25,6 +24,7 @@ namespace WpfApplication1.ViewModels.NoiseNode
             fastNoise = _fastNoise;
         }
 
+        public FlowChartElementInterface Node { get; set; }
         public float GetNoiseValue(int x, int y, float? currentValue = null)
         {
             return fastNoise.Get2dValue(x, y);

@@ -10,5 +10,7 @@ namespace WpfApplication1.Interfaces
     {
         FlowChartElementInterface GetNextNode();
         float GetValue(int x, int y, float? currentValue = null);
+        FlowChartElementInterface Input { get; set; }
+        FlowChartElementInterface Output { get; set; }
     }
 }

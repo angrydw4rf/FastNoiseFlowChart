@@ -25,22 +25,25 @@ namespace WpfApplication1.Controls
     {
         private FastNoiseCLI.FastNoiseCLI fastNoise;
         private NoiseNodeViewModel vm;
-        private FlowChartElementInterface outputNode;
 
         public NoiseNodeControl()
         {
             InitializeComponent();
             fastNoise = new FastNoiseCLI.FastNoiseCLI();
             vm = new NoiseNodeViewModel(fastNoise);
+            vm.Node = this;
             this.DataContext = vm;
         }
 
         public FastNoiseCLI.FastNoiseCLI NoiseMachine { get { return fastNoise; } }
-        public bool isLastNode { get { return outputNode == null; } }
+        public bool isLastNode { get { return Output == null; } }
         public FlowChartElementInterface GetNextNode()
         {
-            return outputNode;
+            return Output;
         }
+
+        public FlowChartElementInterface Input { get; set; }
+        public FlowChartElementInterface Output { get; set; }
 
         public float GetValue(int x, int y, float? currentValue = null)
         {

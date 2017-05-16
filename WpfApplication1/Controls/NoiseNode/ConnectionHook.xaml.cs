@@ -23,29 +23,35 @@ namespace WpfApplication1.Controls.NoiseNode
     {
         public enum ConnectionType { Input, Output }
         private FlowChartElementInterface _node;
-        
+
         public ConnectionHook()
         {
             InitializeComponent();
         }
 
-        public FlowChartElementInterface Node { get { return _node; } set { _node = value; }  }
+        public FlowChartElementInterface Node {
+            get
+            {
+                DependencyObject ucParent = this.Parent;
+
+                while(!(ucParent is UserControl)) //Or FlowChartElementInterface?
+                {
+                    ucParent = LogicalTreeHelper.GetParent(ucParent);
+                }
+
+                return ucParent as FlowChartElementInterface;
+            }
+        }
         public ConnectionType Type { get; set; }
         private void mouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
+                DataObject dragData = new DataObject(typeof(FlowChartElementInterface), Node);
                 DragDrop.DoDragDrop(this,
-                                    this.Node,
+                                    dragData,
                                     DragDropEffects.Copy);
             }
-            /*
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                _isDragging = true;
-
-            }
-            */
         }
 
         private void mouseDown(object sender, MouseEventArgs e)
@@ -60,8 +66,15 @@ namespace WpfApplication1.Controls.NoiseNode
 
         private void drop(object sender, DragEventArgs e)
         {
-            int i=0;
-            i++;
+            if (Type == ConnectionType.Input)
+            {
+                Node.Input = (FlowChartElementInterface)e.Data.GetData(typeof(FlowChartElementInterface));
+                Node.Input.Output = this.Node;
+            }
+            else if (Type == ConnectionType.Output)
+            {
+                Node.Output = (FlowChartElementInterface)e.Data.GetData(typeof(FlowChartElementInterface));
+            }
         }
     }
 }
