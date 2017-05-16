@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="FlowChart" Height="700.368" Width="853.676">
     <Grid>
-        <Controls:NoiseNodeControl x:Name="StartNode" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top"/>
+        <Controls:NoiseNodeControl x:Name="StartNode" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="214" Height="68"/>
+        <Controls:NoiseNodeControl HorizontalAlignment="Left" Margin="424,112,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

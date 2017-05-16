@@ -77,16 +77,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\NoiseNode\ConnectionHook.xaml.cs">
+      <DependentUpon>ConnectionHook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NoiseNode\NoiseNodeConfig.xaml.cs">
       <DependentUpon>NoiseNodeConfig.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Definitions\Enums.cs" />
     <Compile Include="Interfaces\FlowChartElementInterface.cs" />
     <Compile Include="ViewModels\Main\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\NoiseNode\NoiseNodeViewModel.cs" />
     <Compile Include="Windows\FlowChart.xaml.cs">
       <DependentUpon>FlowChart.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\NoiseNode\ConnectionHook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\NoiseNode\NoiseNode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
